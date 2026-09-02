@@ -8,12 +8,12 @@ services:
     ports:
       - "3000:3000"
 
-    volumes:
-      - .:/app
-      - /app/node_modules
-      - /app/.next
+    # volumes:
+    #   - .:/app
+    #   - /app/node_modules
+    #   - /app/.next
 
-    command: npm run dev
+    # command: npm run dev
 
     restart: unless-stopped
 
