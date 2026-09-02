@@ -1,0 +1,18 @@
+services:
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+
+    expose:
+      - "3000"
+
+    restart: unless-stopped
+
+    networks:
+      - backend_network
+
+networks:
+  backend_network:
+    external: true
