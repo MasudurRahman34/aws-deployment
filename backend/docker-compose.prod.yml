@@ -1,0 +1,30 @@
+services:
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+
+    expose:
+      - "8000"
+
+    restart: unless-stopped
+
+    networks:
+      - backend_network
+
+  queue:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+
+    command: php artisan queue:work --sleep=3 --tries=3 --timeout=90
+
+    restart: unless-stopped
+
+    networks:
+      - backend_network
+
+networks:
+  backend_network:
+    driver: bridge
